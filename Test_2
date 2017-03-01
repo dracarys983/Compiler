@@ -1,0 +1,62 @@
+class Program {
+	int a, b, c;
+	int isComposite[10002];
+	int sp[10002];
+	
+	int init() {
+		for i = 0, (i < 10000) {
+			isComposite[i] = 0;
+		}
+		for i = 2, (i < 10000) {
+			if((i%2) == 0) {
+				sp[i] = 2;
+			}
+			else {
+				if(isComposite[i] == 0) {
+					sp[i] = i;
+					for j = i, (j < 10000) {
+						int ind;
+						ind = (j*i);
+						if(ind > 10000) {
+							break;
+						}
+						if((j%2) == 1) {
+							if(isComposite[ind] == 0) {
+								isComposite[ind] = 1;
+								sp[ind] = i;
+							}
+						}
+					}
+				}
+			}
+		}
+		return 0;
+	}
+	int printPrimeFactors(int k) {
+		if(k > 10000) {
+			callout("printf", "Only numbers less than 10000\n");
+			return 0;
+		}
+		else {
+			for i = 0, (i < 50) {
+				if(k <= 1) {
+					break;
+				}
+				callout("printf", "%d ", sp[k]);
+				k = k / sp[k];
+			}
+			callout("printf", "\n");
+		}
+		return 0;
+	}
+	int main() {
+		init();
+		a = 16;
+		b = 20;
+		c = 50;
+		printPrimeFactors(a);
+		printPrimeFactors(b);
+		printPrimeFactors(c);
+		return 0;
+	}
+}
