@@ -4,8 +4,8 @@
 #include <map>
 #include <stack>
 #include <list>
-#include "ast.h"
-#include "stdllvm.h"
+#include "include/ast.h"
+#include "include/stdllvm.h"
 using namespace std;
 using namespace llvm;
 

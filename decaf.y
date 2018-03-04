@@ -1,6 +1,6 @@
 %{
-#include "head.h"           // Include some C++ headers
-#include "ast.h"            // AST's interfaces
+#include "include/head.h"           // Include some C++ headers
+#include "include/ast.h"            // AST's interfaces
 int yyerror(string s);
 int yylex(void);
 using namespace std;

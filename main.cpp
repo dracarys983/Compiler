@@ -1,5 +1,5 @@
-#include "head.h"
-#include "stdllvm.h"
+#include "include/head.h"
+#include "include/stdllvm.h"
 #include <fstream>
 using namespace llvm;
 
@@ -16,11 +16,15 @@ int main(int argc, char **argv)
         cerr << argv[0] << ": File " << argv[1] << " cannot be opened.\n";
         exit( 1 );
     }
+    string fname(argv[1]);
+    fname += ".bc";
+    error_code EC;
+    raw_fd_ostream bc_file(StringRef(fname.c_str()), EC, llvm::sys::fs::F_None);
     Builder = new IRBuilder<>(getGlobalContext());
     DecafToLLVM = new Module("DecafToLLVM", getGlobalContext());
 
     yyparse();
-    DecafToLLVM->dump();
+    WriteBitcodeToFile(DecafToLLVM, bc_file);
 
     return 0;
 }

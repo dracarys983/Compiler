@@ -61,7 +61,9 @@
 #include <llvm/IR/ValueMap.h>
 #include <llvm/IR/ValueSymbolTable.h>
 #include <llvm/ADT/STLExtras.h>
+#include <llvm/ADT/StringRef.h>
 #include <llvm/IR/Verifier.h>
 #include <llvm/Bitcode/ReaderWriter.h>
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/Support/raw_os_ostream.h>
+#include <llvm/Support/FileSystem.h>
